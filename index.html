@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DriveX</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/dics.min.css">
+<!--    <link href="https://db.onlinewebfonts.com/c/d02befc8fdd8e5315fb21fa7f38fd55a?family=Shree+Devanagari+714" rel="stylesheet">-->
+    <!-- <link rel="stylesheet" href="css/bulma.min.css"> -->
+    <script src="scripts/dics.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', domReady);
+        function domReady() {
+            for (const e of document.querySelectorAll(".b-dics")) {
+                new Dics({
+                    container: e,
+                    textPosition: "top"
+                });
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <section>
+        <div class="text-center mt-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h1>Driving Scene Synthesis on Free-form Trajectories with Generative Prior</h1>
+                        <hr>
+                        <h5> <a target="_blank">Zeyu Yang<sup>1*</sup></a>,
+                            <a target="_blank">Zijie Pan<sup>1*</sup></a>,
+                            <a target="_blank">Yuankun Yang<sup>1*</sup></a>,
+                            <a href="https://xiatian-zhu.github.io/" target="_blank">Xiatian Zhu<sup>2</sup></a>,
+                            <a href="https://lzrobots.github.io/" target="_blank">Li Zhang<sup>1<i class="fa fa-envelope"> </i></sup></a> </h5>
+                        <h5 style="color:#000000;"><sup>1 </sup>Fudan University, <sup>2 </sup>University of Surrey </h5>
+                        <h5 style="color:#000000;"><sup>*</sup>Equally contributed.</h5>
+                        <br>
+                        <p>
+                            <a class="btn btn-secondary btn-lg" href="https://github.com/fudan-zvg/DriveX" role="button">Paper</a>
+                            <a class="btn btn-secondary btn-lg" href="https://github.com/fudan-zvg/DriveX" role="button">Code</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+    <br>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+
+                    <h2>Abstract</h2>
+                    <hr style="margin-top:0px">
+
+                    <div class="container">
+                        <img class="img-fluid" src="img/teaser.png" alt="">
+                    </div>
+                    <br>
+
+                    <p class="text-justify">
+                        Driving scene synthesis along free-form trajectories is essential for driving simulations to
+                        enable closed-loop evaluation of end-to-end driving policies.
+                        While existing methods excel at novel view synthesis on recorded trajectories, they face
+                        challenges with novel trajectories due to limited views of driving videos and the vastness
+                        of driving environments.
+                        To tackle this challenge, we propose a novel free-form driving view synthesis approach,
+                        dubbed <b>DriveX</b>, by leveraging video generative prior to optimize a 3D model across
+                        a variety of trajectories.
+                        Concretely, we crafted an inverse problem that enables a video diffusion model to be utilized
+                        as a prior for many-trajectory optimization of a parametric 3D model (e.g., Gaussian splatting).
+                        To seamlessly use the generative prior, we iteratively conduct this process during optimization.
+                        Our resulting model can produce high-fidelity virtual driving environments outside
+                        the recorded trajectory, enabling free-form trajectory driving simulation.
+                        Beyond real driving scenes, DriveX can also be utilized to simulate virtual driving worlds
+                        from AI-generated videos.
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <br>
+    <br>
+
+
+    <section>
+        <div class="container">
+
+            <div class="row" style="margin-top:5px">
+                <div class="col-12 text-center">
+                    <h2>Method Overview</h2>
+                    <hr style="margin-top:0px">
+                </div>
+            </div>
+            <img class="img-fluid" src="img/pipeline.png" alt="">
+            <br>
+            <br>
+            <br>
+
+            <div class="col-12 d-flex justify-content-center">
+                <img class="img-fluid" src="img/flow.png" alt="" style="max-width: 50%; height: auto;">
+            </div>
+            <br>
+            <br>
+
+            <ul>
+                <li> We propose leveraging video generative prior with rich spatiotemporal knowledge for
+                    generalizable driving scene synthesis from single-trajectory recorded videos.
+                </li>
+                <li> We introduce DriveX, a novel driving scene synthesis framework for free-form trajectories that
+                    innovatively constructs an inverse problem to enable the use of a video diffusion model as a prior.
+                </li>
+                <li> Extensive experiments demonstrate that DriveX significantly outperforms existing state-of-the-art
+                    alternatives in driving scene synthesis using single-trajectory recorded videos.
+                    Additionally, we showcase the superiority of our method in rendering novel trajectories of virtual
+                    driving worlds from AI-generated videos, even when faced with inherent content inconsistencies.
+                    This approach enables a more economically scalable large-scale simulation without the need to
+                    collect videos for each scene.
+                </li>
+            </ul>
+
+        </div>
+    </section>
+    <br>
+    <br>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2>Performance on novel trajectory</h2>
+                </div>
+            </div>
+            <hr style="margin-top:0px">
+
+            <div class="row">
+
+                <div class="col">
+                    <figcaption style="text-align: center;">StreetGaussian</figcaption>
+                </div>
+
+                <div class="col">
+                    <figcaption style="text-align: center;">DriveX (Ours)</figcaption>
+                </div>
+            </div>
+
+            <div class="b-row">
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/sg_shift.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                        <source src="img/videos/ours_shift.mp4" type="video/mp4">
+                    </video>
+               </figure>
+            </div>
+
+        </div>
+    </section>
+    <br>
+    <br>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2>Comparisons on Waymo along novel trajectory</h2>
+                </div>
+            </div>
+            <hr style="margin-top:0px">
+
+            <div class="row">
+                <div class="col">
+                    <figcaption style="text-align: center;">EmerNeRF</figcaption>
+                </div>
+
+                <div class="col">
+                    <figcaption style="text-align: center;">PVG</figcaption>
+                </div>
+
+                <div class="col">
+                    <figcaption style="text-align: center;">StreetGaussian</figcaption>
+                </div>
+
+                <div class="col">
+                    <figcaption style="text-align: center;">DriveX (Ours)</figcaption>
+                </div>
+            </div>
+
+            <div class="b-row">
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/enerf1.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/pvg1.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/sg1.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/ours1.mp4" type="video/mp4">
+                    </video>
+                </figure>
+            </div>
+
+            <div class="b-row">
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/enerf2.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/pvg2.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/sg2.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/ours2.mp4" type="video/mp4">
+                    </video>
+                </figure>
+            </div>
+
+            <div class="b-row">
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/enerf3.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/pvg3.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/sg3.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/ours3.mp4" type="video/mp4">
+                    </video>
+                </figure>
+            </div>
+
+            <div class="b-row">
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/enerf4.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/pvg4.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/sg4.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/ours4.mp4" type="video/mp4">
+                    </video>
+                </figure>
+            </div>
+
+            <div class="b-row">
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/enerf5.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/pvg5.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/sg5.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/ours5.mp4" type="video/mp4">
+                    </video>
+                </figure>
+            </div>
+
+            <div class="b-row">
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/enerf6.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/pvg6.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/sg6.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/ours6.mp4" type="video/mp4">
+                    </video>
+                </figure>
+            </div>
+
+        </div>
+    </section>
+    <br>
+    <br>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2>Comparison with DriveDreamer4D</h2>
+                </div>
+            </div>
+            <hr style="margin-top:0px">
+
+            <div class="row">
+
+                <div class="col">
+                    <figcaption style="text-align: center;">Recorded trajectory</figcaption>
+                </div>
+
+                <div class="col">
+                    <figcaption style="text-align: center;">DriveDreamer4D</figcaption>
+                </div>
+
+                <div class="col">
+                    <figcaption style="text-align: center;">DriveX (Ours)</figcaption>
+                </div>
+            </div>
+
+            <div class="b-row">
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/record1.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/dd4d1.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/ours1_dd4d.mp4" type="video/mp4">
+                    </video>
+                </figure>
+            </div>
+
+            <div class="b-row">
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/record2.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/dd4d2.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/ours2_dd4d.mp4" type="video/mp4">
+                    </video>
+                </figure>
+            </div>
+
+        </div>
+    </section>
+    <br>
+    <br>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2>Reconstruction from generated video</h2>
+                </div>
+            </div>
+            <hr style="margin-top:0px">
+
+            <div class="row">
+
+                <div class="col">
+                    <figcaption style="text-align: center;">Original trajectory</figcaption>
+                </div>
+
+                <div class="col">
+                    <figcaption style="text-align: center;">Novel traj. 1</figcaption>
+                </div>
+
+                <div class="col">
+                    <figcaption style="text-align: center;">Novel traj. 2</figcaption>
+                </div>
+            </div>
+
+            <div class="b-row">
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/gen1.mp4" type="video/mp4">
+                    </video>
+                </figure>
+            </div>
+
+            <div class="b-row">
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/gen4.mp4" type="video/mp4">
+                    </video>
+                </figure>
+            </div>
+
+            <div class="b-row">
+                <figure style="text-align: center;">
+                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/gen5.mp4" type="video/mp4">
+                    </video>
+                </figure>
+            </div>
+
+            <div class="b-row">
+                <figure style="text-align: center;">
+                    <video width="115.6%" playsinline="" autoplay="" loop="" preload="" muted="">
+                      <source src="img/videos/gen6.mp4" type="video/mp4">
+                    </video>
+                </figure>
+            </div>
+
+        </div>
+    </section>
+    <br>
+    <br>
+
+
+    <footer class="text-center">
+        <div class="container">
+            <div class="row ">
+                <div class="col-12">
+                    <h2>BibTeX</h2>
+                    <hr style="margin-top:0px">
+                    <div class="bibtexsection">
+                        <code style="color: black;">
+    @article{yang2024drivex,
+      title={Driving Scene Synthesis on Free-form Trajectories with Generative Prior},
+      author={Yang, Zeyu and Pan, Zijie and Yang, Yuankun and Zhu, Xiatian and Zhang, Li},
+      journal={arXiv},
+      year={2024},
+    }
+                        </code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <br>
+    <br>
+
+
+    <div class="row">
+        <div class="col-12 text-center">
+            <p>
+                Acknowledgements: The website template was borrowed from <a href="https://lioryariv.github.io/idr/">Lior Yariv</a>.
+                Image sliders are based on <a href="https://github.com/abelcabezaroman/definitive-image-comparison-slider">dics</a>.
+            </p>
+        </div>
+    </div>
+    <br>
+    <br>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap-4.4.1.js"></script>
+</body>
+</html>
