@@ -2,7 +2,7 @@
 ### [[Project]](https://fudan-zvg.github.io/DriveX) [[Paper]]() 
 
 > [**Driving Scene Synthesis on Free-form Trajectories with Generative Prior**](),            
-> Zeyu Yang, Zijie Pan, Yuankun Yang, [Xiatian Zhu](https://surrey-uplab.github.io/), [Li Zhang](https://lzrobots.github.io)  
+> Zeyu Yang*, Zijie Pan*, Yuankun Yang*, [Xiatian Zhu](https://surrey-uplab.github.io/), [Li Zhang](https://lzrobots.github.io)  
 > **Arxiv preprint**
 
 **Official implementation of "Driving Scene Synthesis on Free-form Trajectories with Generative Prior".** 
