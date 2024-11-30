@@ -18,7 +18,7 @@
 @article{yang2024drivex,
   title={Driving Scene Synthesis on Free-form Trajectories with Generative Prior},
   author={Yang, Zeyu and Pan, Zijie and Yang, Yuankun and Zhu, Xiatian and Zhang, Li},
-  journal={arXiv},
+  journal={arXiv preprint},
   year={2024},
 }
 ```
