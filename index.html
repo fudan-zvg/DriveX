@@ -69,21 +69,7 @@
                     <br>
 
                     <p class="text-justify">
-                        Driving scene synthesis along free-form trajectories is essential for driving simulations to
-                        enable closed-loop evaluation of end-to-end driving policies.
-                        While existing methods excel at novel view synthesis on recorded trajectories, they face
-                        challenges with novel trajectories due to limited views of driving videos and the vastness
-                        of driving environments.
-                        To tackle this challenge, we propose a novel free-form driving view synthesis approach,
-                        dubbed <b>DriveX</b>, by leveraging video generative prior to optimize a 3D model across
-                        a variety of trajectories.
-                        Concretely, we crafted an inverse problem that enables a video diffusion model to be utilized
-                        as a prior for many-trajectory optimization of a parametric 3D model (e.g., Gaussian splatting).
-                        To seamlessly use the generative prior, we iteratively conduct this process during optimization.
-                        Our resulting model can produce high-fidelity virtual driving environments outside
-                        the recorded trajectory, enabling free-form trajectory driving simulation.
-                        Beyond real driving scenes, DriveX can also be utilized to simulate virtual driving worlds
-                        from AI-generated videos.
+                        Driving view synthesis along free-form trajectories is essential for realistic driving simulations, enabling closed-loop evaluation of end-to-end driving policies. Existing methods excel at view interpolation along recorded paths but struggle to generalize to novel trajectories due to limited viewpoints in driving videos. To tackle this challenge, we propose DriveX, a novel free-form driving view synthesis framework, that progressively distills generative prior into the 3D Gaussian model during its optimization. Within this framework, we utilize a video diffusion model to refine the degraded novel trajectory renderings from the in-training Gaussian model, while the restored videos in turn serve as additional supervision for optimizing the 3D Gaussian. Concretely, we craft an inpainting-based video restoration task, which can disentangle the identification of degraded regions from the generative capability of the diffusion model and remove the need of simulating specific degraded pattern in the training of the diffusion model. To further enhance the consistency and fidelity of generated contents, the pseudo ground truth is progressively updated with gradually improved novel trajectory rendering, allowing both components to co-adapt and reinforce each other while minimizing the disruption on the optimization. By tightly integrating 3D scene representation with generative prior, DriveX achieves high-quality view synthesis beyond recorded trajectories in real time—unlocking new possibilities for flexible and realistic driving simulations on free-form trajectories.
                     </p>
 
                 </div>
@@ -184,13 +170,13 @@
             <hr style="margin-top:0px">
 
             <div class="row">
-                <div class="col">
-                    <figcaption style="text-align: center;">EmerNeRF</figcaption>
-                </div>
+<!--                <div class="col">-->
+<!--                    <figcaption style="text-align: center;">EmerNeRF</figcaption>-->
+<!--                </div>-->
 
-                <div class="col">
-                    <figcaption style="text-align: center;">PVG</figcaption>
-                </div>
+<!--                <div class="col">-->
+<!--                    <figcaption style="text-align: center;">PVG</figcaption>-->
+<!--                </div>-->
 
                 <div class="col">
                     <figcaption style="text-align: center;">StreetGaussian</figcaption>
@@ -202,16 +188,16 @@
             </div>
 
             <div class="b-row">
-                <figure style="text-align: center;">
-                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
-                      <source src="img/videos/enerf1.mp4" type="video/mp4">
-                    </video>
-                </figure>
-                <figure style="text-align: center;">
-                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
-                      <source src="img/videos/pvg1.mp4" type="video/mp4">
-                    </video>
-                </figure>
+<!--                <figure style="text-align: center;">-->
+<!--                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">-->
+<!--                      <source src="img/videos/enerf1.mp4" type="video/mp4">-->
+<!--                    </video>-->
+<!--                </figure>-->
+<!--                <figure style="text-align: center;">-->
+<!--                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">-->
+<!--                      <source src="img/videos/pvg1.mp4" type="video/mp4">-->
+<!--                    </video>-->
+<!--                </figure>-->
                 <figure style="text-align: center;">
                     <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
                       <source src="img/videos/sg1.mp4" type="video/mp4">
@@ -225,16 +211,16 @@
             </div>
 
             <div class="b-row">
-                <figure style="text-align: center;">
-                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
-                      <source src="img/videos/enerf2.mp4" type="video/mp4">
-                    </video>
-                </figure>
-                <figure style="text-align: center;">
-                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
-                      <source src="img/videos/pvg2.mp4" type="video/mp4">
-                    </video>
-                </figure>
+<!--                <figure style="text-align: center;">-->
+<!--                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">-->
+<!--                      <source src="img/videos/enerf2.mp4" type="video/mp4">-->
+<!--                    </video>-->
+<!--                </figure>-->
+<!--                <figure style="text-align: center;">-->
+<!--                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">-->
+<!--                      <source src="img/videos/pvg2.mp4" type="video/mp4">-->
+<!--                    </video>-->
+<!--                </figure>-->
                 <figure style="text-align: center;">
                     <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
                       <source src="img/videos/sg2.mp4" type="video/mp4">
@@ -248,16 +234,16 @@
             </div>
 
             <div class="b-row">
-                <figure style="text-align: center;">
-                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
-                      <source src="img/videos/enerf3.mp4" type="video/mp4">
-                    </video>
-                </figure>
-                <figure style="text-align: center;">
-                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
-                      <source src="img/videos/pvg3.mp4" type="video/mp4">
-                    </video>
-                </figure>
+<!--                <figure style="text-align: center;">-->
+<!--                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">-->
+<!--                      <source src="img/videos/enerf3.mp4" type="video/mp4">-->
+<!--                    </video>-->
+<!--                </figure>-->
+<!--                <figure style="text-align: center;">-->
+<!--                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">-->
+<!--                      <source src="img/videos/pvg3.mp4" type="video/mp4">-->
+<!--                    </video>-->
+<!--                </figure>-->
                 <figure style="text-align: center;">
                     <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
                       <source src="img/videos/sg3.mp4" type="video/mp4">
@@ -271,16 +257,16 @@
             </div>
 
             <div class="b-row">
-                <figure style="text-align: center;">
-                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
-                      <source src="img/videos/enerf4.mp4" type="video/mp4">
-                    </video>
-                </figure>
-                <figure style="text-align: center;">
-                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
-                      <source src="img/videos/pvg4.mp4" type="video/mp4">
-                    </video>
-                </figure>
+<!--                <figure style="text-align: center;">-->
+<!--                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">-->
+<!--                      <source src="img/videos/enerf4.mp4" type="video/mp4">-->
+<!--                    </video>-->
+<!--                </figure>-->
+<!--                <figure style="text-align: center;">-->
+<!--                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">-->
+<!--                      <source src="img/videos/pvg4.mp4" type="video/mp4">-->
+<!--                    </video>-->
+<!--                </figure>-->
                 <figure style="text-align: center;">
                     <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
                       <source src="img/videos/sg4.mp4" type="video/mp4">
@@ -294,16 +280,16 @@
             </div>
 
             <div class="b-row">
-                <figure style="text-align: center;">
-                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
-                      <source src="img/videos/enerf5.mp4" type="video/mp4">
-                    </video>
-                </figure>
-                <figure style="text-align: center;">
-                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
-                      <source src="img/videos/pvg5.mp4" type="video/mp4">
-                    </video>
-                </figure>
+<!--                <figure style="text-align: center;">-->
+<!--                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">-->
+<!--                      <source src="img/videos/enerf5.mp4" type="video/mp4">-->
+<!--                    </video>-->
+<!--                </figure>-->
+<!--                <figure style="text-align: center;">-->
+<!--                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">-->
+<!--                      <source src="img/videos/pvg5.mp4" type="video/mp4">-->
+<!--                    </video>-->
+<!--                </figure>-->
                 <figure style="text-align: center;">
                     <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
                       <source src="img/videos/sg5.mp4" type="video/mp4">
@@ -316,28 +302,28 @@
                 </figure>
             </div>
 
-            <div class="b-row">
-                <figure style="text-align: center;">
-                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
-                      <source src="img/videos/enerf6.mp4" type="video/mp4">
-                    </video>
-                </figure>
-                <figure style="text-align: center;">
-                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
-                      <source src="img/videos/pvg6.mp4" type="video/mp4">
-                    </video>
-                </figure>
-                <figure style="text-align: center;">
-                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
-                      <source src="img/videos/sg6.mp4" type="video/mp4">
-                    </video>
-                </figure>
-                <figure style="text-align: center;">
-                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
-                      <source src="img/videos/ours6.mp4" type="video/mp4">
-                    </video>
-                </figure>
-            </div>
+<!--            <div class="b-row">-->
+<!--                <figure style="text-align: center;">-->
+<!--                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">-->
+<!--                      <source src="img/videos/enerf6.mp4" type="video/mp4">-->
+<!--                    </video>-->
+<!--                </figure>-->
+<!--                <figure style="text-align: center;">-->
+<!--                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">-->
+<!--                      <source src="img/videos/pvg6.mp4" type="video/mp4">-->
+<!--                    </video>-->
+<!--                </figure>-->
+<!--                <figure style="text-align: center;">-->
+<!--                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">-->
+<!--                      <source src="img/videos/sg6.mp4" type="video/mp4">-->
+<!--                    </video>-->
+<!--                </figure>-->
+<!--                <figure style="text-align: center;">-->
+<!--                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">-->
+<!--                      <source src="img/videos/ours6.mp4" type="video/mp4">-->
+<!--                    </video>-->
+<!--                </figure>-->
+<!--            </div>-->
 
         </div>
     </section>
@@ -409,66 +395,66 @@
     <br>
     <br>
 
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <h2>Driving scene synthesis along novel trajectory from AI-generated videos</h2>
-                </div>
-            </div>
-            <hr style="margin-top:0px">
+<!--    <section>-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--                <div class="col-12 text-center">-->
+<!--                    <h2>Driving scene synthesis along novel trajectory from AI-generated videos</h2>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <hr style="margin-top:0px">-->
 
-            <div class="row">
+<!--            <div class="row">-->
 
-                <div class="col">
-                    <figcaption style="text-align: center;">Original trajectory</figcaption>
-                </div>
+<!--                <div class="col">-->
+<!--                    <figcaption style="text-align: center;">Original trajectory</figcaption>-->
+<!--                </div>-->
 
-                <div class="col">
-                    <figcaption style="text-align: center;">Novel traj. 1</figcaption>
-                </div>
+<!--                <div class="col">-->
+<!--                    <figcaption style="text-align: center;">Novel traj. 1</figcaption>-->
+<!--                </div>-->
 
-                <div class="col">
-                    <figcaption style="text-align: center;">Novel traj. 2</figcaption>
-                </div>
-            </div>
+<!--                <div class="col">-->
+<!--                    <figcaption style="text-align: center;">Novel traj. 2</figcaption>-->
+<!--                </div>-->
+<!--            </div>-->
 
-            <div class="b-row">
-                <figure style="text-align: center;">
-                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
-                      <source src="img/videos/gen1.mp4" type="video/mp4">
-                    </video>
-                </figure>
-            </div>
+<!--            <div class="b-row">-->
+<!--                <figure style="text-align: center;">-->
+<!--                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">-->
+<!--                      <source src="img/videos/gen1.mp4" type="video/mp4">-->
+<!--                    </video>-->
+<!--                </figure>-->
+<!--            </div>-->
 
-            <div class="b-row">
-                <figure style="text-align: center;">
-                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
-                      <source src="img/videos/gen4.mp4" type="video/mp4">
-                    </video>
-                </figure>
-            </div>
+<!--            <div class="b-row">-->
+<!--                <figure style="text-align: center;">-->
+<!--                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">-->
+<!--                      <source src="img/videos/gen4.mp4" type="video/mp4">-->
+<!--                    </video>-->
+<!--                </figure>-->
+<!--            </div>-->
 
-            <div class="b-row">
-                <figure style="text-align: center;">
-                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
-                      <source src="img/videos/gen5.mp4" type="video/mp4">
-                    </video>
-                </figure>
-            </div>
+<!--            <div class="b-row">-->
+<!--                <figure style="text-align: center;">-->
+<!--                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">-->
+<!--                      <source src="img/videos/gen5.mp4" type="video/mp4">-->
+<!--                    </video>-->
+<!--                </figure>-->
+<!--            </div>-->
 
-            <div class="b-row">
-                <figure style="text-align: center;">
-                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
-                      <source src="img/videos/gen6.mp4" type="video/mp4">
-                    </video>
-                </figure>
-            </div>
+<!--            <div class="b-row">-->
+<!--                <figure style="text-align: center;">-->
+<!--                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">-->
+<!--                      <source src="img/videos/gen6.mp4" type="video/mp4">-->
+<!--                    </video>-->
+<!--                </figure>-->
+<!--            </div>-->
 
-        </div>
-    </section>
-    <br>
-    <br>
+<!--        </div>-->
+<!--    </section>-->
+<!--    <br>-->
+<!--    <br>-->
 
 
     <footer class="text-center">
@@ -479,11 +465,11 @@
                     <hr style="margin-top:0px">
                     <div class="bibtexsection">
                         <code style="color: black;">
-    @article{yang2024drivex,
-      title={Driving Scene Synthesis on Free-form Trajectories with Generative Prior},
+    @inproceedings{yang2024drivex,
+      title={DriveX: Driving View Synthesis on Free-form Trajectories with Generative Prior},
       author={Yang, Zeyu and Pan, Zijie and Yang, Yuankun and Zhu, Xiatian and Zhang, Li},
-      journal={arXiv preprint arXiv:2412.01717},
-      year={2024},
+      booktitle={ICCV},
+      year={2025},
     }
                         </code>
                     </div>
